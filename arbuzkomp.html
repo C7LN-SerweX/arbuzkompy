@@ -107,6 +107,15 @@
             }).then(() => alert("Dziękujemy za wypełnienie ankiety!"))
               .catch(() => alert("Błąd podczas wysyłania formularza."));
         });
+
+        // sekcja speak() - mowiaca dany teskt
+        
+            // funckja mów
+            function speak(text) {
+    const synth = window.speechSynthesis;
+    const utter = new SpeechSynthesisUtterance(text);
+    synth.speak(utter);
+}
     </script>
 </body>
 </html>
