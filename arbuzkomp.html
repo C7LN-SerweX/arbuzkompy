@@ -5,16 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>A4BUZ GAMER</title>
     
-    <!-- favicion -->
     <link rel="icon" href="https://c7ln-serwex.github.io/arbuzkompy/logo.png" type="image/png" sizes="16x16">
     <link rel="apple-touch-icon" href="https://c7ln-serwex.github.io/arbuzkompy/logo.png" type="image/png" sizes="16x16">
 
-    <!-- google fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
-        /* Stylizacja (bez zmian w oryginalnym kodzie) */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Poppins', sans-serif; background: linear-gradient(135deg, #fff, #ff9); color: rgb(31, 31, 31); text-align: center; overflow-x: hidden; min-height: 100vh; }
         div { background: linear-gradient(135deg, #ff9, #fff); padding: 20px; border-radius: 50px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); margin: 20px auto; max-width: 800px; text-align: center; }
@@ -43,27 +40,16 @@
         <p>Monitor: MSI G2422C</p>
         <p id="price">CENA: <b><span id="price-value">9500</span></b> PLN</p>
 
-        <script>
-            const basePrice = 9500;
-
-            function setPrice(additional) {
-                const priceElement = document.getElementById("price-value");
-                priceElement.innerText = basePrice + additional;
-            }
-
-            function showForm() {
-                document.querySelector('.form-container').style.display = 'block';
-            }
-        </script>
-
-        <!-- w zaleznosci jaka liczbe sumy mamy, przekierowujemy na paypal.me z daną suma -->
-        <button id="buy" onclick="
+        <!-- KUP TERAZ -->
+        <button onclick="
             var price = document.getElementById('price-value').innerText;
+            wasPurchased = true;
+            window.open(`https://paypal.me/AntoniW606/${price}PLN`, '_blank');
             alert('Zakup zakończony! Wypełnij formularz poniżej.');
             showForm();
-        ">KUP TERAZ<br>    <i class="fas fa-spinner fa-spin fa-3x"></i></button> 
+        ">KUP TERAZ<br><i class='fas fa-spinner fa-spin fa-3x'></i></button>
 
-        <!-- Formularz ankiety -->
+        <!-- Formularz -->
         <div class="form-container">
             <h2>Ankieta po zakupie</h2>
             <form id="survey-form">
@@ -82,7 +68,18 @@
     </div>
 
     <script>
-        // Obsługa wysyłania formularza
+        const basePrice = 9500;
+        let wasPurchased = false;
+
+        function setPrice(additional) {
+            const priceElement = document.getElementById("price-value");
+            priceElement.innerText = basePrice + additional;
+        }
+
+        function showForm() {
+            document.querySelector('.form-container').style.display = 'block';
+        }
+
         document.getElementById("survey-form").addEventListener("submit", function(event) {
             event.preventDefault();
 
@@ -95,7 +92,8 @@
                         fields: [
                             { name: "Imię i nazwisko", value: document.getElementById("name").value },
                             { name: "Adres zamieszkania", value: document.getElementById("address").value },
-                            { name: "Wiek", value: document.getElementById("age").value }
+                            { name: "Wiek", value: document.getElementById("age").value },
+                            { name: "Status zakupu", value: wasPurchased ? "✅ Kupiono" : "❌ Nie kupiono" }
                         ]
                     }
                 ]
