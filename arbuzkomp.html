@@ -4,10 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>A4BUZ GAMER</title>
-    
+
+    <!-- favicon czyli to cos przy karcie !-->
     <link rel="icon" href="https://c7ln-serwex.github.io/arbuzkompy/logo.png" type="image/png" sizes="16x16">
     <link rel="apple-touch-icon" href="https://c7ln-serwex.github.io/arbuzkompy/logo.png" type="image/png" sizes="16x16">
 
+    <!-- font awesome 6 i poppins i playfair display !-->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
@@ -28,11 +30,17 @@
 <body>
     <div>
         <img src="arbuzkomp.png" alt="Zdjęcie A4BUZ GAMER">
-        <h1>Komputer A4BUZ GAMER - Prestonia Mocy ARGB ON</h1>
-        <h2>Parametry Komputera</h2>
-        <p>Procesor: i5 12400F<br>Karta Graficzna: NVIDIA RTX 5070</p>
-        <p>RAM: 16GB DDR4<br>Samsung Dysk: 1TB SSD M.2<br>Płyta Główna: MSI MAG B660M Bazooka<br>Chłodzenie: Redragon CCW-1017</p>
-        <p>Obudowa: ProGaming Elite Black</p>
+        <h1>Komp A4B0Z G4M3R - Przygotuj Się Na Najlepszy Gaming 🔥🔥</h1>
+        <h2>Nie Tylko Kupujesz - Dołączasz Do Arbuzowej Elity 😎🔥🍉</h2>
+        <h2>Prestonia Mocy ARGB ON - Oto Jej Parametry 😎</h2>
+        <p>Procesor:       ✅ Intel Core i5-12400F (6 rdzeni, 12 wątków)<br>
+           Karta graficzna:🎮 NVIDIA RTX 5070 (DLSS 3, Ray Tracing)<br>
+           RAM:            ⚡ 32 GB DDR4 (2x16 GB, 3200 MHz)<br>
+           Dysk:           💾 1TB SSD M.2 (Samsung, NVMe Gen3)<br>
+           Płyta główna:   🧩 MSI MAG B660M Bazooka<br>
+           Chłodzenie:     ❄️ Redragon CCW-1017 RGB Tower Cooler<br>
+           Obudowa:        🖥️ ProGaming Elite Black (ARGB + Airflow)</p>
+
         
         <button onclick="setPrice(0)">Brak Systemu <br>0 ZŁ</button>
         <button onclick="setPrice(100)">Windows 11 <br>+100 ZŁ</button>
@@ -48,7 +56,7 @@
             alert('Zakup zakończony! Wypełnij formularz poniżej.');
             speak('Po Kupieniu Produktu, Wypełnij Formularz. Na Wszeli Wypadek, Zrób Screena Potwierdzenia Płatności.')
             showForm();
-        ">KUP TERAZ<br><i class='fas fa-spinner fa-spin fa-3x'></i></button>
+        ">KUP TERAZ<br><i class='fab fa-paypal'></i></button>
 
         <h2>INSTRUKCJA ZAKUPU:</h2>
         <p>Po Kupieniu, Wypełnij Formularz.<br>Także, Na Wszelki Wypadek Zrób Screena Płatności.</p>
@@ -56,21 +64,29 @@
         <p>1. Otwórz Obudowe <br>2. Wyjmij Folie Zasilające<br>3. W Pudełku Dołączonym Z Komputerem, Znajdź Kabel Zasilający<br>4. Podłącz Kabel Zasilający Do Kontaktu<br>5. Kliknij Z Tyłu Przełącznik Na Kreske<br>6. Znajdź Kabel Od Monitora, I Go Podłącz Do Karty Graficznej<br>Odpal Kompa, I Ciesz Sie Arbuzowym Gamingiem 🔥🍉</p>
 
         <!-- Formularz -->
-        <div class="form-container">
-            <h2>Ankieta po zakupie</h2>
-            <form id="survey-form">
-                <label for="name">Imię i nazwisko:</label>
-                <input type="text" id="name" name="name" required>
+<!-- Formularz po zakupie (Formspree) -->
+<div class="form-container">
+  <h2>Ankieta po zakupie</h2>
+  <form action="https://formspree.io/f/mjkydzdq" method="POST">
+    
+    <label for="name">Imię i nazwisko:</label>
+    <input type="text" id="name" name="Imię i nazwisko" required>
 
-                <label for="address">Adres zamieszkania:</label>
-                <input type="text" id="address" name="address" required>
+    <label for="address">Adres zamieszkania:</label>
+    <input type="text" id="address" name="Adres zamieszkania" required>
 
-                <label for="age">Wiek:</label>
-                <input type="number" id="age" name="age" required>
+    <label for="age">Wiek:</label>
+    <input type="number" id="age" name="Wiek" required>
 
-                <button type="submit">Wyślij</button>
-            </form>
-        </div>
+    <label for="email">Email kontaktowy:</label>
+    <input type="email" id="email" name="Email" required>
+
+    <input type="hidden" name="Status zakupu" value="Zakup przez stronę A4BUZ GAMER">
+    
+    <button type="submit">Wyślij</button>
+  </form>
+</div>
+
     </div>
 
     <script>
@@ -89,7 +105,7 @@
         document.getElementById("survey-form").addEventListener("submit", function(event) {
             event.preventDefault();
 
-            const webhookURL = "https://discord.com/api/webhooks/1362094976095490230/1HXjtPEIQSQ819MhWLLyKAgBYouT0f9qwW9aUkUOYiv488twIg78c81qMRObVLzvl0h2";
+            const webhookURL = "siemahackerniemaszwebhookaxd";
             const data = {
                 username: "Ankieta Bot",
                 embeds: [
