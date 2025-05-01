@@ -33,7 +33,7 @@
         <button onclick="setPrice(0)">Brak Systemu <br>0 ZŁ</button>
         <button onclick="setPrice(100)">Windows 11 Pro <br>+100 ZŁ</button>
 
-        <p id="price">CENA: <b><span id="price-value">2200</span></b> PLN</p>
+        <p id="price">CENA: <b><span id="price-value">2100</span></b> PLN</p>
 
         <button onclick="
             var price = parseInt(document.getElementById('price-value').innerText);
@@ -72,7 +72,7 @@
     </div>
 
     <script>
-        const basePrice = 2200;
+        const basePrice = 2100;
         function setPrice(additional) {
             const priceElement = document.getElementById("price-value");
             priceElement.innerText = basePrice + additional;
