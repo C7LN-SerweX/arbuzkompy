@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A4BUZ JOB</title>
+    <link rel="icon" href="https://c7ln-serwex.github.io/arbuzkompy/logo.png" type="image/png" sizes="16x16">
+    <link rel="apple-touch-icon" href="https://c7ln-serwex.github.io/arbuzkompy/logo.png" type="image/png" sizes="16x16">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Poppins', sans-serif; background: linear-gradient(135deg, #fff, #cfffcf); color: rgb(31, 31, 31); text-align: center; overflow-x: hidden; min-height: 100vh; }
+        div { background: linear-gradient(135deg, #cfffcf, #fff); padding: 20px; border-radius: 50px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); margin: 20px auto; max-width: 800px; text-align: center; }
+        div:hover { background: linear-gradient(135deg, #fff, #cfffcf); padding: 12px 0; box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); transition: all 0.2s ease; border-radius: 50px; }
+        button { display: inline-block; padding: 10px 20px; font-size: 16px; font-weight: bold; color: #202020; background-color: #90ee90; border: none; border-radius: 5px; cursor: pointer; margin: 10px; }
+        button:hover { background-color: #2e8b57; color: white; }
+    </style>
+</head>
+<body>
+    <div>
+        <img src="arbuzkomp.png" alt="Zdjęcie A4BUZ JOB">
+        <h1>Komp A4BUZ J0B - Twój Nowy Pracownik 🚀💼</h1>
+        <h2>Szybki, Cichy i Gotowy Do Pracy Biurowej 🖥️🍉</h2>
+        <h2>Specyfikacja Zestawu:</h2>
+        <p>Procesor:       ✅ AMD Ryzen 5 5600G (6 rdzeni, z grafiką Vega)<br>
+           RAM:            ⚡ 16 GB DDR4 (2x8 GB, 3200 MHz)<br>
+           Dysk:           💾 500GB SSD M.2 NVMe (Kingston/Crucial)<br>
+           Zasilacz:       🔌 SilentiumPC Elementum 450W (80+ Bronze)<br>
+           Obudowa:        🖥️ SPC Signum SG1M (USB 3.0 + wentylacja)<br>
+           System:         🪟 Windows 11 Pro (opcjonalnie)</p>
+
+        <button onclick="setPrice(0)">Brak Systemu <br>0 ZŁ</button>
+        <button onclick="setPrice(100)">Windows 11 Pro <br>+100 ZŁ</button>
+
+        <p id="price">CENA: <b><span id="price-value">2200</span></b> PLN</p>
+
+        <button onclick="
+            var price = parseInt(document.getElementById('price-value').innerText);
+            var promoCode = prompt('Masz kod promocyjny? Jeśli tak, wpisz go teraz:');
+            if (promoCode === 'ArbuzowyJob') {
+                alert('Kod promocyjny zaakceptowany! Otrzymujesz 100 zł zniżki 🍉');
+                price -= 100;
+                if (price < 0) price = 0;
+            } else if (promoCode && promoCode !== '') {
+                alert('Nieprawidłowy kod promocyjny.');
+            }
+            window.open(`https://paypal.me/AntoniW606/${price}PLN`, '_blank');
+            alert('Zakup zakończony! Wypełnij formularz poniżej.');
+            speak('Po kupieniu produktu, wypełnij formularz. Na wszelki wypadek, zrób screena potwierdzenia płatności.');
+            showForm();
+        ">KUP TERAZ<br><i class='fab fa-paypal'></i></button>
+
+        <h2>INSTRUKCJA ZAKUPU:</h2>
+        <p>Po zakupie wypełnij formularz poniżej. Na wszelki wypadek zrób zrzut ekranu potwierdzenia płatności.</p>
+
+        <div class="form-container" style="display:none;">
+            <h2>Ankieta po zakupie</h2>
+            <form action="https://formspree.io/f/mjkydzdq" method="POST">
+                <label for="name">Imię i nazwisko:</label>
+                <input type="text" id="name" name="Imię i nazwisko" required>
+                <label for="address">Adres zamieszkania:</label>
+                <input type="text" id="address" name="Adres zamieszkania" required>
+                <label for="age">Wiek:</label>
+                <input type="number" id="age" name="Wiek" required>
+                <label for="email">Email kontaktowy:</label>
+                <input type="email" id="email" name="Email" required>
+                <input type="hidden" name="Status zakupu" value="Zakup przez stronę A4BUZ JOB">
+                <button type="submit">Wyślij</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        const basePrice = 2200;
+        function setPrice(additional) {
+            const priceElement = document.getElementById("price-value");
+            priceElement.innerText = basePrice + additional;
+        }
+        function showForm() {
+            document.querySelector('.form-container').style.display = 'block';
+        }
+        function speak(text) {
+            const synth = window.speechSynthesis;
+            const utter = new SpeechSynthesisUtterance(text);
+            synth.speak(utter);
+        }
+    </script>
+</body>
+</html>
